@@ -1,23 +1,6 @@
 #include <iostream>
-#include "matrice22.h"
 
-void Somme33(float result[3][3]){
-    float T1[3][3] = {};
-    float T2[3][3] = {};
-    std::cout << "Entrer les elements de votre premiere matrice : \n";
-    for (int i = 0; i <= 2; i++) {
-        for (int j = 0; j <= 2; j++) {
-            std::cout << "Table1[" << i << "][" << j << "] = ";
-            std::cin >> T1[i][j];
-        }
-    }
-    std::cout << "Entrer les elements de votre deuxieme matrice : \n";
-    for (int i = 0; i <= 2; i++) {
-        for (int j = 0; j <= 2; j++) {
-            std::cout << "Table2[" << i << "][" << j << "] = ";
-            std::cin >> T2[i][j];
-        }
-    }
+void Somme33(float result[3][3], float T1[3][3], float T2[3][3]){
     for (int i = 0; i <= 2; i++) {
         for (int j = 0; j <= 2; j++) {
             result[i][j] = T1[i][j] + T2[i][j];
@@ -25,23 +8,7 @@ void Somme33(float result[3][3]){
     }    
 }
 
-void Soustracion33(float result[3][3]){
-    float T1[3][3] = {};
-    float T2[3][3] = {};
-    std::cout << "Entrer les elements de votre premiere matrice : \n";
-    for (int i = 0; i <= 2; i++) {
-        for (int j = 0; j <= 2; j++) {
-            std::cout << "Table1[" << i << "][" << j << "] = ";
-            std::cin >> T1[i][j];
-        }
-    }
-    std::cout << "Entrer les elements de votre deuxieme matrice : \n";
-    for (int i = 0; i <= 2; i++) {
-        for (int j = 0; j <= 2; j++) {
-            std::cout << "Table2[" << i << "][" << j << "] = ";
-            std::cin >> T2[i][j];
-        }
-    }
+void Soustracion33(float result[3][3], float T1[3][3], float T2[3][3]){
     for (int i = 0; i <= 2; i++) {
         for (int j = 0; j <= 2; j++) {
             result[i][j] = T1[i][j] - T2[i][j];
@@ -49,23 +16,7 @@ void Soustracion33(float result[3][3]){
     }    
 }
 
-void Multiplication33(float result[3][3]){
-    float T1[3][3] = {};
-    float T2[3][3] = {};
-    std::cout << "Entrer les elements de votre premiere matrice : \n";
-    for (int i = 0; i <= 2; i++) {
-        for (int j = 0; j <= 2; j++) {
-            std::cout << "Table1[" << i << "][" << j << "] = ";
-            std::cin >> T1[i][j];
-        }
-    }
-    std::cout << "Entrer les elements de votre deuxieme matrice : \n";
-    for (int i = 0; i <= 2; i++) {
-        for (int j = 0; j <= 2; j++) {
-            std::cout << "Table2[" << i << "][" << j << "] = ";
-            std::cin >> T2[i][j];
-        }
-    }
+void Multiplication33(float result[3][3], float T1[3][3], float T2[3][3]){
     result[0][0] = T1[0][0] * T2[0][0] + T1[0][1] * T2[1][0] + T1[0][2] * T2[2][0];
     result[0][1] = T1[0][0] * T2[0][1] + T1[0][1] * T2[1][1] + T1[0][2] * T2[2][1];
     result[0][2] = T1[0][0] * T2[0][2] + T1[0][1] * T2[1][2] + T1[0][2] * T2[2][2];
@@ -78,29 +29,13 @@ void Multiplication33(float result[3][3]){
 }
 
 
-void Determinant33(float &determinant){
-    float T[3][3];
-    std::cout << "Entrer les elements de votre matrice : \n";
-    for (int i = 0; i <= 2; i++) {
-        for (int j = 0; j <= 2; j++) {
-            std::cout << "Table[" << i << "][" << j << "] = ";
-            std::cin >> T[i][j];
-        }
-    }
+void Determinant33(float &determinant, float T[3][3]){
     determinant = T[0][0] * (T[1][1] * T[2][2] - T[1][2] * T[2][1])
                 - T[0][1] * (T[1][0] * T[2][2] - T[1][2] * T[2][0])
                 + T[0][2] * (T[1][0] * T[2][1] - T[1][1] * T[2][0]);
 }
 
-void Transposee33(float result[3][3]){
-    float T[3][3];
-    std::cout << "Entrer les elements de votre matrice : \n";
-    for (int i = 0; i <= 2; i++) {
-        for (int j = 0; j <= 2; j++) {
-            std::cout << "Table[" << i << "][" << j << "] = ";
-            std::cin >> T[i][j];
-        }
-    }
+void Transposee33(float result[3][3], float T[3][3]){
     for (int i = 0 ; i <= 2 ; i++) {
         for (int j = 0 ; j <= 2 ; j++) {
             result[j][i] = T[i][j];
@@ -108,16 +43,8 @@ void Transposee33(float result[3][3]){
     }
 }
 
-void Inverse33(float result[3][3], int &t){
-    float T[3][3];
+void Inverse33(float result[3][3], int &t, float T[3][3]){
     float determinant;
-    std::cout << "Entrer les elements de votre matrice : \n";
-    for (int i = 0; i <= 2; i++) {
-        for (int j = 0; j <= 2; j++) {
-            std::cout << "Table[" << i << "][" << j << "] = ";
-            std::cin >> T[i][j];
-        }
-    }
     determinant = T[0][0] * (T[1][1] * T[2][2] - T[1][2] * T[2][1])
               - T[0][1] * (T[1][0] * T[2][2] - T[1][2] * T[2][0])
               + T[0][2] * (T[1][0] * T[2][1] - T[1][1] * T[2][0]);
@@ -145,8 +72,11 @@ void Inverse33(float result[3][3], int &t){
 }
 
 
-void Trace33(float &trace){
-    float T[3][3];
+void Trace33(float &trace, float T[3][3]){
+    trace = T[0][0] + T[1][1] + T[2][2];
+}
+
+void lecture1(float T[3][3]){
     std::cout << "Entrer les elements de votre matrice : \n";
     for (int i = 0; i <= 2; i++) {
         for (int j = 0; j <= 2; j++) {
@@ -154,5 +84,22 @@ void Trace33(float &trace){
             std::cin >> T[i][j];
         }
     }
-    trace = T[0][0] + T[1][1] + T[2][2];
 }
+
+void lecture2(float T1[3][3], float T2[3][3]){
+    std::cout << "Entrer les elements de votre premiere matrice : \n";
+    for (int i = 0; i <= 2; i++) {
+        for (int j = 0; j <= 2; j++) {
+            std::cout << "Table1[" << i << "][" << j << "] = ";
+            std::cin >> T1[i][j];
+        }
+    }
+    std::cout << "Entrer les elements de votre deuxieme matrice : \n";
+    for (int i = 0; i <= 2; i++) {
+        for (int j = 0; j <= 2; j++) {
+            std::cout << "Table2[" << i << "][" << j << "] = ";
+            std::cin >> T2[i][j];
+        }
+    }
+}
+
